@@ -2,8 +2,14 @@ import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { white, gray, black, green } from '../utils/colors'
 import Button from '../components/Button'
+import * as API from '../utils/api'
+import _ from 'lodash'
 
 export default class IndividualDeck extends React.Component {
+  state = {
+    deck: {},
+    count: 0,
+  }
 
   static navigationOptions = ({ navigation }) => {
     const { deckId } = navigation.state.params
@@ -12,15 +18,51 @@ export default class IndividualDeck extends React.Component {
     }
   }
 
+  componentDidMount() {
+    API.getDeck(this.props.navigation.state.params.deckId)
+      .then((deck) => {
+        const questions = _.values(deck['questions'])
+        this.setState({
+          deck: deck,
+          count: questions.length
+        })
+      })
+  }
+
   render() {
+    const { navigation } = this.props
+    const { deck, count } = this.state
+
     return (
       <View style={styles.container}>
-        <Text>Individual Deck View</Text>
-        <Button style={{ backgroundColor: green}} onPress={() => this.props.navigation.navigate('NewQuestion')}>
+        <Text style={{ fontSize: 30 }}>{deck.title}</Text>
+        <View style={{ height: 10 }}></View>
+          <Text style={{ color: gray }}>
+            {count === 1 ? `${count} Card` : `${count} Cards`}
+          </Text>
+
+        <Button
+          style={{ backgroundColor: green, marginTop: 50 }}
+          onPress={() => navigation.navigate(
+            'NewQuestion',
+            { title: deck.title }
+          )}
+        >
           Add Card
         </Button>
-        <Button onPress={() => this.props.navigation.navigate('Quiz')}>
-          Start Quiz
+        {count !== 0  &&
+          <Button
+            style={{ backgroundColor: green }}
+            onPress={() => navigation.navigate(
+              'Quiz',
+              { title: deck.title }
+            )}
+          >
+            Start Quiz
+          </Button>
+        }
+        <Button onPress={() => navigation.navigate('DeckList')}>
+          Back to Decks
         </Button>
       </View>
     )
