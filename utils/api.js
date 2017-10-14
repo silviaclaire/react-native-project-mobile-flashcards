@@ -30,7 +30,7 @@ const defaultData = {
   }
 }
 
-export function getDefaultDecks() {
+function setDefaultDecks() {
   AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(defaultData))
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
     .then((results) => {
@@ -41,7 +41,9 @@ export function getDefaultDecks() {
 export function getDecks() {
   return AsyncStorage.getItem(DECK_STORAGE_KEY)
     .then((results) => {
-      return decks = JSON.parse(results)
+      return results === null
+        ? setDefaultDecks()
+        : JSON.parse(results)
     })
 }
 
