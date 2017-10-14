@@ -9,6 +9,7 @@ import NewQuestion from './screens/NewQuestion'
 import { white, black, red } from './utils/colors'
 import { FontAwesome } from '@expo/vector-icons'
 import { Constants } from 'expo'
+import { setLocalNotification } from './utils/helpers'
 
 const Tabs = TabNavigator({
   DeckList: {
@@ -74,6 +75,9 @@ const MainNavigator = StackNavigator({
 })
 
 export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
   render() {
     return (
       <View style={{flex: 1}}>

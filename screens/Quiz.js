@@ -4,6 +4,7 @@ import { white, black, red, green } from '../utils/colors'
 import Button from '../components/Button'
 import * as API from '../utils/api'
 import _ from 'lodash'
+import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
 export default class Quiz extends React.Component {
   state = {
@@ -54,6 +55,7 @@ export default class Quiz extends React.Component {
 
     if (index+1 > questions.length) {
       const perfect = sumCorrect === questions.length
+      perfect && clearLocalNotification().then(setLocalNotification)
 
       return (
         <View style={[styles.container, styles.center]}>
