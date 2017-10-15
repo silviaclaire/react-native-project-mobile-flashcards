@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,7 @@ import Button from '../components/Button'
 import * as API from '../utils/api'
 import _ from 'lodash'
 
-export default class DeckList extends React.Component {
+class DeckList extends Component {
   state = {
     decks: {},
     count: {},
@@ -22,6 +22,7 @@ export default class DeckList extends React.Component {
     API.getDecks().then((decks) => {
       Object.keys(decks).map((deck) => {
         const questions = _.values(decks[deck]['questions'])
+
         this.setState({
           decks: decks,
           count: {
@@ -85,3 +86,5 @@ const styles = StyleSheet.create({
     },
   }
 })
+
+export default DeckList

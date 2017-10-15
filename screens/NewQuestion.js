@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, Keyboard, KeyboardAvoidingView } from 'react-native'
 import { white, black, gray } from '../utils/colors'
 import Button from '../components/Button'
 import * as API from '../utils/api'
 import { guid } from '../utils/helpers'
 
-export default class NewQuestion extends React.Component {
+class NewQuestion extends Component {
   state = {
     question: '',
     answer: ''
@@ -73,3 +73,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   }
 })
+
+export default NewQuestion

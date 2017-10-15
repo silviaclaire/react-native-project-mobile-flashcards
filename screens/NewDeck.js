@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, Text, TextInput, KeyboardAvoidingView, Keyboard } from 'react-native'
 import { white, black, gray } from '../utils/colors'
 import Button from '../components/Button'
 import * as API from '../utils/api'
 
-export default class NewDeck extends React.Component {
+class NewDeck extends Component {
   state = {
     title: ''
   }
@@ -66,3 +66,5 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   }
 })
+
+export default NewDeck

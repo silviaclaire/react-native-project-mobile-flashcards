@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { white, gray, black, green } from '../utils/colors'
 import Button from '../components/Button'
 import * as API from '../utils/api'
 import _ from 'lodash'
 
-export default class IndividualDeck extends React.Component {
+class IndividualDeck extends Component {
   state = {
     deck: {},
     count: 0,
@@ -13,6 +13,7 @@ export default class IndividualDeck extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     const { deckId } = navigation.state.params
+
     return {
       title: `Deck: ${deckId}`
     }
@@ -77,3 +78,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 })
+
+export default IndividualDeck

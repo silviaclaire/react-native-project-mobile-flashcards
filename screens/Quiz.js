@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { white, black, red, green } from '../utils/colors'
 import Button from '../components/Button'
@@ -6,7 +6,7 @@ import * as API from '../utils/api'
 import _ from 'lodash'
 import { clearLocalNotification, setLocalNotification } from '../utils/helpers'
 
-export default class Quiz extends React.Component {
+class Quiz extends Component {
   state = {
     questions: [],
     index: 0,
@@ -143,3 +143,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   }
 })
+
+export default Quiz
