@@ -15,7 +15,7 @@ export function guid() {
 
 export function clearLocalNotification() {
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
-    .then(Notifications.cancelAllScheduledNotificationsAsync())
+    .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
 function createNotification() {
