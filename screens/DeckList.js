@@ -54,6 +54,7 @@ export default class DeckList extends React.Component {
             </Text>
           </TouchableOpacity>
         ))}
+        <View style={{ height: 50 }}></View>
       </ScrollView>
     )
   }
