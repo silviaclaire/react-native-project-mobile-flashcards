@@ -33,9 +33,9 @@ class Quiz extends Component {
   }
 
   onCorrect = () => {
-    this.setState({
-      index: this.state.index+1,
-      sumCorrect: this.state.sumCorrect+1,
+    this.setState(state => ({
+      index: state.index+1,
+      sumCorrect: state.sumCorrect+1,
       showing: 'Question',
     })
   }
