@@ -33,12 +33,16 @@ export default class Quiz extends React.Component {
   onCorrect = () => {
     this.setState({
       index: this.state.index+1,
-      sumCorrect: this.state.sumCorrect+1
+      sumCorrect: this.state.sumCorrect+1,
+      showing: 'Question',
     })
   }
 
   onIncorrect = () => {
-    this.setState({ index: this.state.index+1 })
+    this.setState({
+      index: this.state.index+1,
+      showing: 'Question',
+    })
   }
 
   restartQuiz = () => {
