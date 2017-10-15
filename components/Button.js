@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { white, black } from '../utils/colors'
 
-export default function Button ({ children, onPress, style={} }) {
+export default function Button ({ children, onPress, style={}, disabled }) {
   return (
-    <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
+    <TouchableOpacity style={[styles.button, style]} disabled={disabled} onPress={onPress}>
       <Text style={styles.buttonText}>{children}</Text>
     </TouchableOpacity>
   )

@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView } from 'react-native'
-import { white, black } from '../utils/colors'
+import { StyleSheet, Text, TextInput, Keyboard, KeyboardAvoidingView } from 'react-native'
+import { white, black, gray } from '../utils/colors'
 import Button from '../components/Button'
 import * as API from '../utils/api'
 import { guid } from '../utils/helpers'
@@ -19,6 +19,8 @@ export default class NewQuestion extends React.Component {
       question: this.state.question,
       answer: this.state.answer
     })
+
+    Keyboard.dismiss()
 
     this.props.navigation.navigate(
       'IndividualDeck',
@@ -43,7 +45,11 @@ export default class NewQuestion extends React.Component {
           value={answer}
           placeholder={'Answer'}
         />
-        <Button onPress={this.submit}>
+        <Button
+          style={{ backgroundColor: question.trim() && answer.trim() ? black : gray }}
+          disabled={!question.trim() || !answer.trim()}
+          onPress={this.submit}
+        >
           Submit
         </Button>
       </KeyboardAvoidingView>

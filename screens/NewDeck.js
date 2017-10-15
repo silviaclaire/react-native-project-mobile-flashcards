@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, KeyboardAvoidingView, Keyboard } from 'react-native'
-import { white, black } from '../utils/colors'
+import { white, black, gray } from '../utils/colors'
 import Button from '../components/Button'
 import * as API from '../utils/api'
 
@@ -11,6 +11,7 @@ export default class NewDeck extends React.Component {
 
   submit = () => {
     const { title } = this.state
+
     API.saveDeckTitle(title)
 
     Keyboard.dismiss()
@@ -32,7 +33,11 @@ export default class NewDeck extends React.Component {
           value={title}
           placeholder={'Deck Title'}
         />
-        <Button onPress={this.submit}>
+        <Button
+          style={{ backgroundColor: title.trim() ? black : gray }}
+          disabled={!title.trim()}
+          onPress={this.submit}
+        >
           Submit
         </Button>
       </KeyboardAvoidingView>
