@@ -15,7 +15,9 @@ class Quiz extends Component {
   }
 
   componentDidMount() {
-    API.getDeck(this.props.navigation.state.params.title)
+    const { title } = this.props.navigation.state.params
+
+    API.getDeck(title)
       .then((deck) => {
         const questions = _.values(deck['questions'])
         this.setState({ questions })

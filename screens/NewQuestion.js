@@ -12,7 +12,7 @@ class NewQuestion extends Component {
   }
 
   submit = () => {
-    const title = this.props.navigation.state.params.title
+    const { title } = this.props.navigation.state.params
 
     API.addCardToDeck(title, {
       id: guid(),

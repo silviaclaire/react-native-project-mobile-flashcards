@@ -20,7 +20,9 @@ class IndividualDeck extends Component {
   }
 
   componentDidMount() {
-    API.getDeck(this.props.navigation.state.params.deckId)
+    const { deckId } = this.props.navigation.state.params
+
+    API.getDeck(deckId)
       .then((deck) => {
         const questions = _.values(deck['questions'])
         this.setState({
